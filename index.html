@@ -167,6 +167,65 @@
   }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
+  /* Effects: reveal on scroll, hover lift, marquee, hero glow */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .hero { position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; width: 480px; height: 480px; right: -120px; top: -140px;
+    background: radial-gradient(circle, rgba(212, 169, 78, 0.20), transparent 65%);
+    animation: drift 9s ease-in-out infinite alternate; pointer-events: none;
+  }
+  @keyframes drift { from { transform: translate(0, 0); } to { transform: translate(-30px, 24px); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .hero h1 { animation: fadeUp 0.7s ease both; }
+  .hero .role { animation: fadeUp 0.7s ease 0.12s both; }
+  .hero .tagline { animation: fadeUp 0.7s ease 0.24s both; }
+  .hero .meta, .hero .cta { animation: fadeUp 0.7s ease 0.36s both; }
+  .card, .stat { transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+  .card:hover, .stat:hover {
+    transform: translateY(-4px); border-color: rgba(212, 169, 78, 0.55);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  }
+  tbody tr { transition: background 0.2s ease; }
+  tbody tr:hover { background: rgba(212, 169, 78, 0.06); }
+  .btn-gold:hover { filter: brightness(1.08); }
+  header.scrolled { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35); }
+  .marquee { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 0; margin-top: 40px; }
+  .marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-track span { font-weight: 700; font-size: 15px; color: var(--muted); padding: 0 18px; white-space: nowrap; }
+  .marquee-track span i { color: var(--gold); font-style: normal; padding-left: 36px; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .step-num { font-size: 26px; font-weight: 800; color: var(--gold); }
+  .faq-item { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-bottom: 10px; overflow: hidden; }
+  .faq-q {
+    width: 100%; background: none; border: none; color: var(--text);
+    font: inherit; font-weight: 700; font-size: 16px; text-align: left;
+    padding: 16px 20px; cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-q .chev { color: var(--gold); font-size: 22px; line-height: 1; transition: transform 0.3s ease; flex-shrink: 0; }
+  .faq-item.open .faq-q .chev { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .faq-a p { padding: 0 20px 16px; color: var(--muted); }
+  .faq-item.open .faq-a { max-height: 220px; }
+  #toTop {
+    position: fixed; right: 22px; bottom: 22px; z-index: 60;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gold); color: #14100a; border: none;
+    font-size: 18px; font-weight: 800; cursor: pointer;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  #toTop.show { opacity: 1; pointer-events: auto; }
+  #toTop:hover { transform: translateY(-3px); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .marquee-track, .hero::before, .hero h1, .hero .role, .hero .tagline, .hero .meta, .hero .cta { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
   @media (max-width: 760px) {
     .hero { padding: 56px 0 40px; }
     .hero h1 { font-size: 38px; }
@@ -224,6 +283,13 @@
       <div class="stat"><div class="num">22</div><div class="lbl">Merged pull requests in open source</div></div>
       <div class="stat"><div class="num">11</div><div class="lbl">Open source projects contributed to</div></div>
       <div class="stat"><div class="num">v0.46.0</div><div class="lbl">Filament release that shipped my Jira connector</div></div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Python <i>◆</i></span><span>SQL <i>◆</i></span><span>Apache Spark <i>◆</i></span><span>Databricks <i>◆</i></span><span>Delta Lake <i>◆</i></span><span>dbt <i>◆</i></span><span>CDC <i>◆</i></span><span>Medallion Architecture <i>◆</i></span><span>PostgreSQL <i>◆</i></span><span>Airflow <i>◆</i></span><span>Rust <i>◆</i></span><span>Go <i>◆</i></span>
+      <span>Python <i>◆</i></span><span>SQL <i>◆</i></span><span>Apache Spark <i>◆</i></span><span>Databricks <i>◆</i></span><span>Delta Lake <i>◆</i></span><span>dbt <i>◆</i></span><span>CDC <i>◆</i></span><span>Medallion Architecture <i>◆</i></span><span>PostgreSQL <i>◆</i></span><span>Airflow <i>◆</i></span><span>Rust <i>◆</i></span><span>Go <i>◆</i></span>
     </div>
   </div>
 
@@ -403,9 +469,39 @@
     </div>
   </section>
 
+  <section id="how">
+    <div class="wrap">
+      <p class="sec-label">05 · How I Work</p>
+      <h2>How I work</h2>
+      <p class="sec-intro">A simple process, from understanding the data to proving the result is correct.</p>
+      <div class="grid-2">
+        <div class="card">
+          <p class="step-num">01</p>
+          <h3>Understand the data</h3>
+          <p>Read the source, check what correct looks like, and find where the pipeline can silently go wrong.</p>
+        </div>
+        <div class="card">
+          <p class="step-num">02</p>
+          <h3>Build the pipeline</h3>
+          <p>Incremental ingestion with CDC and Delta Lake MERGE, dbt models for transformation, and tests for data quality.</p>
+        </div>
+        <div class="card">
+          <p class="step-num">03</p>
+          <h3>Prove it is correct</h3>
+          <p>Reproduce the bug first, validate against the source, and ship with tests so the wrong answer cannot come back.</p>
+        </div>
+        <div class="card">
+          <p class="step-num">04</p>
+          <h3>Share what I learned</h3>
+          <p>Write it up on Medium, open source the fix, and keep the notes so the next person does not hit the same bug.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="education">
     <div class="wrap">
-      <p class="sec-label">05 · Education</p>
+      <p class="sec-label">06 · Education</p>
       <h2>Education and certifications</h2>
       <div class="card">
         <p class="date">2022 to 2026</p>
@@ -434,7 +530,7 @@
 
   <section id="blog">
     <div class="wrap">
-      <p class="sec-label">06 · Blog</p>
+      <p class="sec-label">07 · Blog</p>
       <h2>Writing</h2>
       <p class="sec-intro">I write about what I learn from open source, in plain language, with the real numbers and the real mistakes.</p>
       <div class="card">
@@ -447,9 +543,28 @@
     </div>
   </section>
 
+  <section id="faq">
+    <div class="wrap">
+      <p class="sec-label">08 · FAQ</p>
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <button class="faq-q" type="button">What kind of work do you do?<span class="chev">+</span></button>
+        <div class="faq-a"><p>I build data pipelines in Python and SQL on Spark, Databricks and Delta Lake, and I contribute to open source data tools, mostly fixing correctness bugs.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Are you open to remote work?<span class="chev">+</span></button>
+        <div class="faq-a"><p>Yes. I am based in Lahore, Pakistan, and I have worked remotely with clients since 2023.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">How can I reach you?<span class="chev">+</span></button>
+        <div class="faq-a"><p>Email is fastest: <a href="mailto:shahzebali1218@gmail.com">shahzebali1218@gmail.com</a>. You can also find me on <a href="https://github.com/Shahzeb-DataEngineer" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.linkedin.com/in/shahzeb2001/" target="_blank" rel="noopener">LinkedIn</a>.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="wrap">
-      <p class="sec-label">07 · Contact</p>
+      <p class="sec-label">09 · Contact</p>
       <h2>Let us build something together</h2>
       <div class="contact-box">
         <p>Reach out about data engineering roles, consulting work, or interesting pipeline problems. I reply fastest by email.</p>
@@ -471,6 +586,8 @@
   </div>
 </footer>
 
+<button id="toTop" type="button" aria-label="Back to top">↑</button>
+
 <script>
   (function () {
     var btn = document.getElementById('menuBtn');
@@ -482,6 +599,63 @@
       if (e.target.tagName === 'A') links.classList.remove('open');
     });
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Reveal on scroll */
+    var revealEls = document.querySelectorAll('section, .stat, .card, .tl-item, .table-wrap, .marquee');
+    revealEls.forEach(function (el) { el.classList.add('reveal'); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+
+    /* Animated stat counters */
+    var nums = document.querySelectorAll('.stat .num');
+    var nio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        nio.unobserve(el);
+        var target = parseInt(el.textContent, 10);
+        if (isNaN(target)) return;
+        var start = null;
+        var dur = 1100;
+        function tick(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function (el) { nio.observe(el); });
+
+    /* FAQ accordion */
+    document.querySelectorAll('.faq-q').forEach(function (q) {
+      q.addEventListener('click', function () {
+        var item = q.parentElement;
+        var wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function (o) { o.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    /* Header shadow and back-to-top button */
+    var header = document.querySelector('header');
+    var toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY || 0;
+      header.classList.toggle('scrolled', y > 10);
+      toTop.classList.toggle('show', y > 600);
+    }, { passive: true });
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   })();
 </script>
 
