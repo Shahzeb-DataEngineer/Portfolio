@@ -206,12 +206,12 @@
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
   .photo-track { display: flex; gap: 18px; width: max-content; animation: marquee 34s linear infinite; }
-  .photo-track img { width: 300px; height: 200px; object-fit: cover; border-radius: 20px; display: block; }
+  .photo-track img { width: 300px; height: 200px; object-fit: contain; background: #fff; border: 1px solid var(--border); border-radius: 20px; display: block; }
   .marquee-cap { text-align: center; color: var(--grey-text); margin-top: 20px; font-size: 15px; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* Academic */
-  .acad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 820px; margin: 0 auto; }
+  .acad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1080px; margin: 0 auto; }
   .acad-card { text-align: center; }
   .badge {
     width: 88px; height: 88px; border-radius: 50%; border: 1px solid var(--border);
@@ -309,7 +309,7 @@
 
   /* Beyond */
   .beyond-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; }
-  .beyond-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 24px; }
+  .beyond-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 24px; }
   .recog { list-style: none; margin-top: 18px; }
   .recog li { padding: 13px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; gap: 16px; }
   .recog li:last-child { border-bottom: none; }
@@ -543,7 +543,7 @@
           <div class="flip-inner">
             <div class="flip-face flip-front">
               <h3>Beta Microsoft Learn Student Ambassador</h3>
-              <p class="exp-meta"><span>Microsoft</span><span>2024 to 2025</span></p>
+              <p class="exp-meta"><span>Microsoft</span><span>Nov 2023 to Apr 2025</span></p>
               <p>Hosted technical sessions and community workshops on <strong>Azure, data tooling and developer fundamentals</strong>.</p>
               <div class="tag-row"><span class="tag">Azure</span><span class="tag">Community</span><span class="tag">Workshops</span></div>
               <button class="flip-btn" type="button">Flip for details ↻</button>
@@ -551,8 +551,8 @@
             <div class="flip-face flip-back">
               <h3>At a glance</h3>
               <ul>
-                <li><strong>Program:</strong> Microsoft Learn Student Ambassadors</li>
-                <li><strong>Level:</strong> Beta</li>
+                <li><strong>Joined:</strong> Nov 2023, Alpha Dec 2023</li>
+                <li><strong>Level:</strong> Beta, Jan 2024 to Apr 2025</li>
                 <li><strong>Topics:</strong> Azure, data tooling, dev fundamentals</li>
                 <li><strong>Format:</strong> sessions and workshops</li>
               </ul>
@@ -587,15 +587,35 @@
       </div>
       <div class="photo-marquee" aria-hidden="true">
         <div class="photo-track">
-          <img src="profile.jpg" alt="">
-          <img src="photo-selfie.jpg" alt="">
-          <img src="photo-stage.jpg" alt="">
-          <img src="profile.jpg" alt="">
-          <img src="photo-selfie.jpg" alt="">
-          <img src="photo-stage.jpg" alt="">
+          <img src="slider-01.jpg" alt="ResearchGate achievement: third-most-read research item in the department">
+          <img src="slider-02.jpg" alt="Shahzeb Ali holding his thesis book">
+          <img src="slider-03.jpg" alt="Shahzeb Ali holding a glass award">
+          <img src="slider-04.jpg" alt="Certificate of Recognition for Shahzeb Ali">
+          <img src="slider-05.jpg" alt="Shahzeb Ali holding competitive programming certificates">
+          <img src="slider-06.jpg" alt="Shahzeb Ali Microsoft Learn Student Ambassadors profile">
+          <img src="slider-07.jpg" alt="MLSA PUCIT Lahore Chapter award from Connect Lahore MLSA Summit">
+          <img src="slider-08.jpg" alt="Microsoft Learn Student Ambassadors Beta certificate">
+          <img src="slider-09.jpg" alt="Microsoft Learn Student Ambassadors 2023 certificate">
+          <img src="slider-10.jpg" alt="Google Foundations Data Data Everywhere certificate on Coursera">
+          <img src="slider-11.jpg" alt="HackerRank Problem Solving Intermediate certificate">
+          <img src="slider-12.jpg" alt="Learn SQL from Scratch certificate">
+          <img src="slider-13.jpg" alt="DataCamp Associate Data Engineer certificate">
+          <img src="slider-01.jpg" alt="ResearchGate achievement: third-most-read research item in the department">
+          <img src="slider-02.jpg" alt="Shahzeb Ali holding his thesis book">
+          <img src="slider-03.jpg" alt="Shahzeb Ali holding a glass award">
+          <img src="slider-04.jpg" alt="Certificate of Recognition for Shahzeb Ali">
+          <img src="slider-05.jpg" alt="Shahzeb Ali holding competitive programming certificates">
+          <img src="slider-06.jpg" alt="Shahzeb Ali Microsoft Learn Student Ambassadors profile">
+          <img src="slider-07.jpg" alt="MLSA PUCIT Lahore Chapter award from Connect Lahore MLSA Summit">
+          <img src="slider-08.jpg" alt="Microsoft Learn Student Ambassadors Beta certificate">
+          <img src="slider-09.jpg" alt="Microsoft Learn Student Ambassadors 2023 certificate">
+          <img src="slider-10.jpg" alt="Google Foundations Data Data Everywhere certificate on Coursera">
+          <img src="slider-11.jpg" alt="HackerRank Problem Solving Intermediate certificate">
+          <img src="slider-12.jpg" alt="Learn SQL from Scratch certificate">
+          <img src="slider-13.jpg" alt="DataCamp Associate Data Engineer certificate">
         </div>
       </div>
-      <p class="marquee-cap">Moments from the journey so far.</p>
+      <p class="marquee-cap">Awards, certificates, and milestones from the journey so far.</p>
     </div>
   </section>
 
@@ -618,7 +638,14 @@
           <p>Data Engineer Associate</p>
           <p class="date">Issued Jun 2026 · Credential ID: DEA0011894586179</p>
         </div>
+        <div class="card acad-card">
+          <div class="badge">PG</div>
+          <h3>Punjab Group of Colleges</h3>
+          <p>Intermediate in Computer Science</p>
+          <p class="date">Aug 2020 to Mar 2022</p>
+        </div>
       </div>
+      <p class="note">Languages: Urdu (full professional) · English (professional working)</p>
     </div>
   </section>
 
@@ -637,7 +664,7 @@
         <div class="tool-cluster c-peach">
           <h3>Big Data and Cloud</h3>
           <p>Where the data lives and runs.</p>
-          <div class="tool-chips"><span>Apache Spark</span><span>Databricks</span><span>Delta Lake</span><span>AWS S3</span></div>
+          <div class="tool-chips"><span>Apache Spark</span><span>Databricks</span><span>Delta Lake</span><span>AWS S3</span><span>Azure</span></div>
         </div>
         <div class="tool-cluster c-mint">
           <h3>Pipelines</h3>
@@ -879,6 +906,7 @@
             <li><span><strong>Jira connector for Filament shipped in v0.46.0</strong></span><span class="yr">2026</span></li>
             <li><span><strong>22 merged pull requests across 11 projects</strong></span><span class="yr">2026</span></li>
             <li><span><strong>Beta Microsoft Learn Student Ambassador</strong></span><span class="yr">2024 to 2025</span></li>
+            <li><span><strong>Community Contribution Award</strong></span></li>
           </ul>
         </div>
         <div class="card" style="padding: 16px;">
@@ -893,6 +921,10 @@
         <div class="card">
           <h3>Giving back through teaching</h3>
           <p>As a teaching assistant at PUCIT I ran hands-on labs on databases, warehousing, ETL and BI. Watching students go from confused to confident is still one of the best parts of the work.</p>
+        </div>
+        <div class="card">
+          <h3>Research publication</h3>
+          <p><strong>Statistical Analysis of Online Ride Hailing Apps in Pakistan.</strong> With 21 new reads, it was the third-most-read research item in my department last week (Dec 2025).</p>
         </div>
         <div class="card">
           <h3>Now</h3>
